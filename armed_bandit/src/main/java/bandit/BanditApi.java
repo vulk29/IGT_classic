@@ -126,7 +126,8 @@ public class BanditApi {
                 .order("likes").list().size());
         
         ofy().save().entities(bandit).now();
-        if (profile.maxnk<bandit.fitness[0]) profile.update_maxnk(bandit.fitness);
+        profile.update_score(bandit.fitness);
+        profile.update_bet(bandit.bet, bandit.order);
         ofy().clear();
 
         profile.addToSolutionKeys(solutionKey.toString(), bandit.order);
@@ -145,7 +146,8 @@ public class BanditApi {
                      .order("likes").list().size(), fit);
       */  	 
         	 ofy().save().entities(bandit).now();
-             if (profile.maxnk<bandit.fitness[0]) profile.update_maxnk(bandit.fitness);
+        	 profile.update_score(bandit.fitness);
+             profile.update_bet(bandit.bet, bandit.order);
              ofy().clear();
 
              profile.addToSolutionKeys(solutionKey.toString(), bandit.order);

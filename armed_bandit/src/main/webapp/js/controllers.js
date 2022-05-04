@@ -196,19 +196,19 @@ banditApp.controllers.controller('CreateSolution',
                             // The request has succeeded.
                             
                             if (resp.result.bet>0)
-                            {$scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1]+ ' and you made a bet on arm ' + resp.result.bet;
+                            {$scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1]+ ' and you made a bet on arm ' + resp.result.bet+ ' your entire score is ' + resp.result.score;
                             }
                             else
                             {
-                            $scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1];
+                            $scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1]+' your entire score is ' + resp.result.score;
                             }
-                            if (resp.result.order==23)   
+                            if (resp.result.order==98)   
                         	{
                         		$scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1]+ ' you have one more attempt left';
                         		
                         	}
                             
-                            if (resp.result.order>23)   
+                            if (resp.result.order>99)   
                             	{
                             		$scope.messages = 'Your earnings this round: ' + resp.result.fitness[0] + 'the bank took: ' + resp.result.fitness[1]+' this game is over. sorry. thank you so much for playing!';
                                     window.setTimeout(function(){window.location.href = '#/thankyou'}, 2000);

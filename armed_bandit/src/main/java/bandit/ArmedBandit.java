@@ -63,6 +63,7 @@ public class ArmedBandit implements Serializable{
     @Index
     public int bet=0;
     
+    
 
    
     /**
@@ -90,6 +91,9 @@ public class ArmedBandit implements Serializable{
 
     @Index
 	public int likes = 0;
+
+    @Index
+	public int score;
 	
     private static Profile getProfileFromUser(String userId) {
         // First fetch the user's Profile from the datastore.
@@ -122,6 +126,9 @@ public class ArmedBandit implements Serializable{
         this.bet=solutionForm.bet;
         updateWithConferenceForm(solutionForm);
         this.time=System.currentTimeMillis();
+        this.score=profile.score+this.fitness[0]-this.fitness[1];
+        
+        
 
 
     }
@@ -198,7 +205,7 @@ this.time=System.currentTimeMillis();
         this.solution = convert(solutionForm.getSolution());
         this.description = solutionForm.getDescription();
         this.fitness = solutionForm.getFitness(getARM(solutionForm.getSolution()));//fitness function to be added 
-               this.bet=extract(solutionForm.getSolution());
+        this.bet=extract(solutionForm.getSolution());
     }
     
 

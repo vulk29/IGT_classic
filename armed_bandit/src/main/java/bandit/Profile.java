@@ -24,8 +24,9 @@ public class Profile {
 	public int solscount=0;
 	
 
-	public int max=0;
-	public double maxnk=0;
+	public int betz=0;
+	public int bet_time=0;
+	public int score=0;
     
 
 	/**
@@ -73,14 +74,15 @@ public class Profile {
      */
     private Profile() {}
 
-	public void update_max(int fitness) {
+	public void update_score(int [] fitness) {
 		// TODO Auto-generated method stub
-		this.max=fitness;
+		this.score=this.score+fitness[0]-fitness[1];
 	}
 	
-	public void update_maxnk(int [] fitness) {
+	public void update_bet(int bet, int order) {
 		// TODO Auto-generated method stub
-		this.maxnk=fitness[0];
+		this.betz=bet;
+				this.bet_time=order; 
 	}
 
 	
