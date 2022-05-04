@@ -44,15 +44,14 @@
 </div>
 </div>
 <div ng-controller="ShowSolutionCtrl">
-    <div class="row" ng-init="getSolutionsCreated();">
-        <div class="col-lg-12">
-            <h3><td>{{bandits.fitness}}</td></h3>
-        </div>
-    </div>
+<div x="{{item=getSolutionsCreated()}}">
+        <td>your score is {{item.scores}}</td>
+        <td>your score is {{scores}}</td>
+ </div>
 	
 	
             
-    <tabset id="show-conferences-tab" justified="true">
+   <!--  <tabset id="show-conferences-tab" justified="true">
         <tab select="tabAllSelected()" heading=""></tab>
        
     </tabset>
@@ -60,41 +59,41 @@
         <div class="col-xs-12 col-sm-6">
     		<div class="row row-offcanvas row-offcanvas-right" ng-class="{active: isOffcanvasEnabled}">
         	<div class="col-xs-12 col-sm-8">
-    				<!-- <button ng-click="getSolutionsCreated();" class="btn btn-primary">
+    				<button ng-click="getSolutionsCreated();" class="btn btn-primary">
                 <i class="glyphicon glyphicon-search"></i>History
-            </button> -->
-<!-- 					<p class="pull-right visible-xs"> -->
-<!--                 <button ng-hide="selectedTab !='ALL'" type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas" -->
-<!--                         ng-click="isOffcanvasEnabled = !isOffcanvasEnabled"> -->
-<!--                     <i class="glyphicon glyphicon-chevron-left" ng-show="isOffcanvasEnabled"></i> -->
-<!--                     <span ng-show="isOffcanvasEnabled">Hide</span> -->
-<!--                     <span ng-hide="isOffcanvasEnabled">Show</span> -->
-<!--                     filters -->
-<!--                     <i class="glyphicon glyphicon-chevron-right" ng-hide="isOffcanvasEnabled"></i> -->
-<!--                 </button> -->
-<!--             </p> -->
+            </button>
+					<p class="pull-right visible-xs">
+                <button ng-hide="selectedTab !='ALL'" type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas"
+                        ng-click="isOffcanvasEnabled = !isOffcanvasEnabled">
+                    <i class="glyphicon glyphicon-chevron-left" ng-show="isOffcanvasEnabled"></i>
+                    <span ng-show="isOffcanvasEnabled">Hide</span>
+                    <span ng-hide="isOffcanvasEnabled">Show</span>
+                    filters
+                    <i class="glyphicon glyphicon-chevron-right" ng-hide="isOffcanvasEnabled"></i>
+                </button>
+            </p>
 
-<!--             <div class="table" ng-show="bandits.length > 0"> -->
-<!--                 <table id="conference-table" class="table table-striped table-hover"> -->
-<!--                     <thead> -->
-<!--                     <tr> -->
-<!--                     	<th>Arm</th> -->
-<!--                         <td>Score</td> -->
-<!--                         <td>Attempt number</td> -->
-<!--                         <td>Bet on arm number</td> -->
-<!--                     </tr> -->
-<!--                     </thead> -->
-<!--                     <tbody> -->
-<!--                     <tr ng-repeat="bandit in bandits | orderBy:'-order' |startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize"> -->
+            <div class="table" ng-show="bandits.length > 0">
+                <table id="conference-table" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                    	<th>Arm</th>
+                        <td>Score</td>
+                        <td>Attempt number</td>
+                        <td>Bet on arm number</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="bandit in bandits | orderBy:'-order' |startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
                         
-<!--                         <span class = "code"> <td>{{bandit.solution}}</td> </span> -->
-<!--                         <td>{{bandit.fitness}}</td> -->
-<!--                         <td>{{bandit.order+1}}</td> -->
-<!--                         <td>{{bandit.bet}}</td> -->
-<!--                     </tr> -->
-<!--                     </tbody> -->
-<!--                 </table> -->
-<!--             </div> -->
+                        <span class = "code"> <td>{{bandit.solution}}</td> </span>
+                        <td>{{bandit.fitness}}</td>
+                        <td>{{bandit.order+1}}</td>
+                        <td>{{bandit.bet}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div> -->
 	<div class = "row row-offcanvas-right.active">
 		        <ul class="pagination" ng-show="bandits.length > 0">
                 <li ng-class="{disabled: pagination.currentPage == 0 }">

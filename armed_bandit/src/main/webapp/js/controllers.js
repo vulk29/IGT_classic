@@ -294,6 +294,11 @@ banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTT
      * @type {Array}
      */
     $scope.bandits = [];
+    $scope.scores=0;
+    $scope.score = function () {
+    	console.log($scope.bandits);
+        return $scope.bandits.score;
+    };
 
     /**
      * Holds the state if offcanvas is enabled.
@@ -475,7 +480,10 @@ banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTT
                         }
                     } else {
                         // The request has succeeded.
+                        
                         $scope.bandits = resp.result.items;
+                        console.log(resp.result);
+                        $scope.scores= resp.result.score;
                         $scope.loading = false;
                         $scope.messages = 'Query succeeded : Solutions you have liked and added';
                         $scope.alertStatus = 'success';

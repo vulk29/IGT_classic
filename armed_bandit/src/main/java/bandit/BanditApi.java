@@ -189,15 +189,15 @@ public class BanditApi {
 	            path = "getSolutionsCreated",
 	            httpMethod = HttpMethod.POST
 	    )
-	    public List<ArmedBandit> getSolutionssCreated(@Named ("user") String user) throws UnauthorizedException {
+	    public Profile getSolutionssCreated(@Named ("user") String user) throws UnauthorizedException {
 	        // If not signed in, throw a 401 error.
 	        if (user == null) {
 	            throw new UnauthorizedException("Authorization required");
 	        }
 	        String organizerUserId = user;
-	        return ofy().load().type(ArmedBandit.class)
-	                .ancestor(Key.create(Profile.class, organizerUserId))
-	                .order("order").list();
+	        Profile profile = getProfile(user);
+	        
+	        return profile;
 	    }
 	    
 	    @ApiMethod(
