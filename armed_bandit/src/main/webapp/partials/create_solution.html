@@ -1,0 +1,173 @@
+
+<div ng-controller="CreateSolution">
+ <div class="row">
+        <div class="col-lg-12">
+            <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+        </div>
+ </div>
+ <div class="row">
+     <div class="col-md-7">
+            <div ng-app="modalTest">
+				<div ng-controller="ModalDemoCtrl">
+    				<script type="text/ng-template" id="myModalContent.html">
+        				<div class="modal-header">
+            				<h3>Hej</h3>
+        				</div>
+        				<div class="modal-body">
+            						<p>
+						Choose one of the bandit arms and try your luck! 
+						Check your history to see what went on. 
+									<p>
+        				</div>
+        				<div class="modal-footer">
+            				<button class="btn btn-primary" ng-click="ok()">OK</button>
+            				<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        				</div>
+    				</script>
+
+    				<button class="btn" ng-click="open()">See instructions</button>
+   				</div>
+			</div>
+			 <div id="messages" class="alert alert-info" ng-show="messag">
+                <span ng-bind="messag"></span>
+                <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messag = ''"
+                   ng-show="messag"></i>
+                   <img class="spinner" src="/img/ajax-loader.gif" ng-show="loading"/>
+         </div>      	
+         <div id="messages" class="alert alert-success" ng-show="messages" >
+                <span ng-bind="messages"></span>
+                 <i class="dismiss-messages pull-right glyphicon glyphicon-remove" ng-click="messages = ''"
+                   ng-show="messages"></i>
+         </div>     
+            
+
+</div>
+</div>
+<div ng-controller="ShowSolutionCtrl">
+    <div class="row" ng-init="getSolutionsCreated();">
+        <div class="col-lg-12">
+            <h3></h3>
+        </div>
+    </div>
+	
+	
+            
+    <tabset id="show-conferences-tab" justified="true">
+        <tab select="tabAllSelected()" heading=""></tab>
+       
+    </tabset>
+       <div class="row" ng-class="{active: isOffcanvasEnabled}">
+        <div class="col-xs-12 col-sm-6">
+    		<div class="row row-offcanvas row-offcanvas-right" ng-class="{active: isOffcanvasEnabled}">
+        	<div class="col-xs-12 col-sm-8">
+    				<button ng-click="getSolutionsCreated();" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i>History
+            </button>
+					<p class="pull-right visible-xs">
+                <button ng-hide="selectedTab !='ALL'" type="button" class="btn btn-primary btn-sm" data-toggle="offcanvas"
+                        ng-click="isOffcanvasEnabled = !isOffcanvasEnabled">
+                    <i class="glyphicon glyphicon-chevron-left" ng-show="isOffcanvasEnabled"></i>
+                    <span ng-show="isOffcanvasEnabled">Hide</span>
+                    <span ng-hide="isOffcanvasEnabled">Show</span>
+                    filters
+                    <i class="glyphicon glyphicon-chevron-right" ng-hide="isOffcanvasEnabled"></i>
+                </button>
+            </p>
+
+            <div class="table" ng-show="bandits.length > 0">
+                <table id="conference-table" class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                    	<th>Arm</th>
+                        <td>Score</td>
+                        <td>Attempt number</td>
+                        <td>Bet on arm number</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="bandit in bandits | orderBy:'-order' |startFrom: pagination.currentPage * pagination.pageSize | limitTo: pagination.pageSize">
+                        
+                        <span class = "code"> <td>{{bandit.solution}}</td> </span>
+                        <td>{{bandit.fitness}}</td>
+                        <td>{{bandit.order+1}}</td>
+                        <td>{{bandit.bet}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+	<div class = "row row-offcanvas-right.active">
+		        <ul class="pagination" ng-show="bandits.length > 0">
+                <li ng-class="{disabled: pagination.currentPage == 0 }">
+                    <a ng-class="{disabled: pagination.currentPage == 0 }"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = 0)">&lt&lt</a>
+                </li>
+                <li ng-class="{disabled: pagination.currentPage == 0 }">
+                    <a ng-class="{disabled: pagination.currentPage == 0 }"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage - 1)">&lt</a>
+                </li>
+
+                <!-- ng-repeat creates a new scope. Need to specify the pagination.currentPage as $parent.pagination.currentPage -->
+                <li ng-repeat="page in pagination.pageArray()" ng-class="{active: $parent.pagination.currentPage == page}">
+                    <a ng-click="$parent.pagination.currentPage = page">{{page + 1}}</a>
+                </li>
+
+                <li ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}">
+                    <a ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage + 1)">&gt</a>
+                </li>
+                <li ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}">
+                    <a ng-class="{disabled: pagination.currentPage == pagination.numberOfPages() - 1}"
+                       ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.numberOfPages() - 1)">&gt&gt</a>
+                </li>
+            </ul>
+        </div>
+	</div>
+  </div>
+</div>
+</div>
+
+<div class="row">
+<div ng-app="drag" ng-controller="mySolutionCtrl"> 
+
+		<button class="triangle" ng-style="myStyle" ng-click="on(SolutionForm)" ng-hide="showButton()" ng-disabled="isDisabled"></button>  
+        <button class="square" ng-style="myStyle" ng-click="off()" ng-show="showButton()" ng-disabled="isDisabled"> </button> 
+ <!--        <button class = "square" ng-repeat="item in collection"
+             ng-class="{'active-selection': $index == selectedIndex }"
+             ng-click="on(SolutionForm, $index)">
+        
+      </button>
+  -->       	
+        <button class="triangle"  ng-style="myStyle2" ng-click="on2(SolutionForm)" ng-hide="showButton2()" ng-disabled="isDisabled2"></button>  
+        <button class="square"  ng-style="myStyle2" ng-click="off2()" ng-show="showButton2()" ng-disabled="isDisabled2"></button>
+         
+        <button class="triangle"  ng-style="myStyle3" ng-click="on3(SolutionForm)" ng-hide="showButton3()" ng-disabled="isDisabled3"></button>  
+        <button class="square"  ng-style="myStyle3"ng-click="off3()" ng-show="showButton3()" ng-disabled="isDisabled3"></button> 	
+		
+		<button class="triangle"  ng-style="myStyle4" ng-click="on4(SolutionForm)" ng-hide="showButton4()" ng-disabled="isDisabled4"></button>  
+        <button class="square"  ng-style="myStyle4"ng-click="off4()" ng-show="showButton4()" ng-disabled="isDisabled4"></button>
+          
+</div>
+</div>
+<div class="row">
+<div ng-app="drag" ng-controller="mySolutionCtrl"> 
+<span ng-init="originalinitz()"></span>
+       <button ng-click="initz()" ng-style="myStylez1" ng-disabled="isDisabled_bet">Betting on arm 1 </button> {{count}}
+       <button ng-click="initz2()" ng-style="myStylez2" ng-disabled="isDisabled2_bet">Betting on arm 2</button> {{count2}}
+       <button ng-click="initz3()"ng-style="myStylez3" ng-disabled="isDisabled3_bet">Betting on arm 3</button> {{count3}}
+       <button ng-click="initz4()"ng-style="myStylez4" ng-disabled="isDisabled4_bet">Betting on arm 4</button> {{count4}}
+        {{count5}}
+  </div>
+  
+</div>
+<!--    				  <button ng-click="createSolution(SolutionForm)" class="btn btn-primary"
+                 >Submit solution
+                </button>
+                
+ -->
+ 
+</div>
+
+    
+
+
+ 

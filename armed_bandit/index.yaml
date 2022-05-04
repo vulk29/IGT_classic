@@ -1,0 +1,22 @@
+indexes:
+
+- kind: ArmedBandit
+  ancestor: yes  
+  properties:
+  - name: order
+
+- kind: ArmedBandit
+  ancestor: yes  
+  properties:
+  - name: likes
+
+- kind: ArmedBandit
+  properties:
+  - name: solution
+  - name: order
+  
+- kind: ArmedBandit
+  properties:
+  - name: solution
+  - name: bet
+    

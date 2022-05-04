@@ -1,0 +1,170 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    padding-top: 70px;
+}
+
+#signInLink, #signOutLink {
+    cursor: pointer;
+}
+
+/* To disable the Google+ Sign In Button, but gapi.signin.render should be invoked to store the credential
+   if that is stored in cookie. */
+#signInButton iframe {
+    display: none;
+}
+
+
+
+.required {
+    color: red;
+}
+
+.dismiss-messages {
+    cursor: pointer;
+}
+
+/* In a small screen, make the alert message sticky to the top */
+@media (max-width: 768px) {
+    #messages.alert, #rootMessages.alert {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 65px;
+        z-index: 1000;
+    }
+}
+
+.container_row {
+    border: 1px solid red;
+    height: 50px;
+    margin: 0;
+    position: relative;
+}
+.form-group-condensed {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.label-separated {
+    margin-right: 8px;
+}
+
+.spinner {
+    position: fixed;
+    top: 70px;
+    z-index: 9999;
+}
+
+.bin {
+  height: 60px;
+  min-width: 60px;
+  float: left;
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.cin3 {
+  height: 60px;
+  min-width: 60px;
+  margin-left: 8px;
+  border: 1px solid red;
+  padding: 10px;
+}
+
+.cin2 {
+  height: 60px;
+  min-width: 60px;
+  margin-left: 8px;
+  border: 1px solid red;
+  padding: 10px;
+}
+table_h {font:bold 13px Verdana}
+p_h {font:normal 11px Tahoma,Verdana}
+input,select {font:normal 12px Tahoma,Verdana}
+select {width:40px}
+a_h {font-weight:bold}
+.tower {position:absolute;visibility:visible;
+margin-left:77px;
+margin-top:184px;
+font:bold 10px Tahoma}
+.container_g {position:absolute;visibility:visible;}
+.towervert {position:absolute;visibility:visible;border:1px solid black;background-color:black}
+.towerhoriz {position:absolute; visibility:visible;border:1px solid black;font-size:1px;background-color:black}
+.disk {visibility:visible;border:1px solid black}
+
+.square {
+height: 150px;
+width: 150px;  
+background-image:url('/img/square_heads.png');
+background-position: center; 
+background-repeat:no-repeat;
+float: left;
+
+}
+
+.triangle {
+ 	
+height:150px;
+width: 150px;  
+background-image:url('/img/triangle_heads2.png');
+background-repeat:no-repeat;
+background-color: #0000ff	;
+background-position: center;
+float: left;
+}
+
+#signInButton {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+#profile-container {
+    float: right;
+    font-size: 85%;
+}
+
+#profile img {
+    max-height: 35px;
+    width: auto;
+    vertical-align: middle;
+}
+
+#show-conferences-tab {
+    margin-bottom: 20px;
+}
+
+ul#filters {
+    list-style: none;
+    padding-left: 0px;
+    font-size: 85%;
+}
+
+ul#filters span.glyphicon-remove {
+    font-size: 80%;
+}
+
+ul#conferences-list {
+    list-style: none;
+}
+.intro-header {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    /* text-shadow: black 0.1em 0.1em 0.2em; */
+    background:  url(/img/meeting-room.jpg) no-repeat;
+    text-align: left;
+}
+.intro-message {
+    position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    vertical-align: middle;
+  
+    
+}
+
+.section-a {
+    padding: 50px 0;
+}
