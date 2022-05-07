@@ -86,8 +86,8 @@ public class SolutionForm implements Serializable{
         return solution;
     }
     
-    public int [] getFitness(int arm) {
-        return  Fitness.evaluate(arm);
+    public int [] getFitness(int arm, int order, int arm_logic) {
+        return  Fitness.evaluate(arm, order, arm_logic);
     }
     
     public String getId() {

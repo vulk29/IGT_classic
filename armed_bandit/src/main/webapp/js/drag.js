@@ -89,7 +89,7 @@ drag.controller("mySolutionCtrl", function ($scope, startFact) {
         };
     
     
-     $scope.initz = function () {
+     $scope.initz = function () {	
 
             if (startFact.isStarted()==='false') {
             	console.log(startFact.isStarted());

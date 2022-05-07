@@ -38,7 +38,9 @@ public class ArmedBandit implements Serializable{
 	static final int PROBLEM_SIZE = 4;
 
 
-	public static Random random=new Random(System.currentTimeMillis());
+
+	@Index
+	public int arm_logic;
 
 	
 	/**
@@ -63,7 +65,11 @@ public class ArmedBandit implements Serializable{
     @Index
     public int bet=0;
     
-    
+    public static int [] fitness1 = {0,0,-150, 0, -300, 0, -200, 0, -250, -350, 0, -350, 0, -250, -200, 0, -300, -150, 0, 0, 0,   -300, 0, -350, 0, -200, -250, -150, 0, 0, -350, -200, -250, 0, 0,    0, -150, -300, 0, 0};
+    public static int [] fitness2 = {0,0,  0,  0,   0,  0,   0,  0, -1250,  0,  0,  0,   0, -1250, 0,   0,   0,    0,  0, 0,  -1250, 0, 0,   0,    0,     0,  0,   0, 0,   0,    0, -1250, 0, 0,    0,   0,    0,  0,  0, 0};
+    public static int [] fitness3 = {0,0, -50, 0, - 50, 0,  -50, 0, -50,  -50,  0, -25, -75,  0,   0,   0,  -25,  -75, 0, -50,   0,  0, 0,  -50, -25, -50,   0,    0, -75, -50,  0,   0,   0, -25, -25,  0,   -75, 0, -50,-75};
+    public static int [] fitness4 = {0,0,   0, 0,    0, 0,    0, 0,   0,  -250, 0,  0,   0,   0,   0,   0,    0,    0, 0, -250,  0,  0, 0,   0,    0,    0,   0,   0, -250, 0,   0,   0,   0, 0,  -250,  0,     0, 0, 0, 0};
+
 
    
     /**
@@ -124,9 +130,11 @@ public class ArmedBandit implements Serializable{
         this.profileKey = Key.create(Profile.class, organizerUserId);
         this.organizerUserId = organizerUserId;
         this.bet=solutionForm.bet;
+        this.arm_logic=profile.rand;
         updateWithConferenceForm(solutionForm);
         this.time=System.currentTimeMillis();
-        this.score=profile.score+this.fitness[0]-this.fitness[1];
+        this.score=profile.score+this.fitness[0]+this.fitness[1];
+        
         
         
 
@@ -204,7 +212,7 @@ this.time=System.currentTimeMillis();
     public void updateWithConferenceForm(SolutionForm solutionForm) {
         this.solution = convert(solutionForm.getSolution());
         this.description = solutionForm.getDescription();
-        this.fitness = solutionForm.getFitness(getARM(solutionForm.getSolution()));//fitness function to be added 
+        this.fitness = solutionForm.getFitness(getARM(solutionForm.getSolution()), this.order, this.arm_logic);//fitness function to be added 
         this.bet=extract(solutionForm.getSolution());
     }
     

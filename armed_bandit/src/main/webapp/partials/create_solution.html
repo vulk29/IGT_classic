@@ -16,7 +16,7 @@
         				<div class="modal-body">
             						<p>
 						Choose one of the bandit arms and try your luck! 
-						Check your history to see what went on. 
+						Depending on your browser, your score might be sometimes slow to update, use the 'refresh button' to see your current score. 
 									<p>
         				</div>
         				<div class="modal-footer">
@@ -44,12 +44,16 @@
 </div>
 </div>
 <div ng-controller="ShowSolutionCtrl">
-<div x="{{item=getSolutionsCreated()}}">
-        <td>your score is {{item.scores}}</td>
-        <td>your score is {{scores}}</td>
+<button ng-click="init_score();" class="btn btn-primary">
+                <i class="glyphicon glyphicon-search"></i>refresh score
+</button>	
+<span ng-init="init_score()"></span>
+<div >
+         Your current score is <span ng-bind="scores"></span>
+         
  </div>
-	
-	
+
+
             
    <!--  <tabset id="show-conferences-tab" justified="true">
         <tab select="tabAllSelected()" heading=""></tab>
@@ -94,7 +98,7 @@
                     </tbody>
                 </table>
             </div> -->
-	<div class = "row row-offcanvas-right.active">
+<!-- 	<div class = "row row-offcanvas-right.active">
 		        <ul class="pagination" ng-show="bandits.length > 0">
                 <li ng-class="{disabled: pagination.currentPage == 0 }">
                     <a ng-class="{disabled: pagination.currentPage == 0 }"
@@ -105,7 +109,7 @@
                        ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.currentPage - 1)">&lt</a>
                 </li>
 
-                <!-- ng-repeat creates a new scope. Need to specify the pagination.currentPage as $parent.pagination.currentPage -->
+                ng-repeat creates a new scope. Need to specify the pagination.currentPage as $parent.pagination.currentPage
                 <li ng-repeat="page in pagination.pageArray()" ng-class="{active: $parent.pagination.currentPage == page}">
                     <a ng-click="$parent.pagination.currentPage = page">{{page + 1}}</a>
                 </li>
@@ -119,7 +123,7 @@
                        ng-click="pagination.isDisabled($event) || (pagination.currentPage = pagination.numberOfPages() - 1)">&gt&gt</a>
                 </li>
             </ul>
-        </div>
+        </div> -->
 	</div>
   </div>
 </div>

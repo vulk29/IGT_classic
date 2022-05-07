@@ -74,6 +74,7 @@ public class BanditApi {
 		String userId = profileForm.getDisplayName();
 		String  displayName= profileForm.getDisplayName();
 		
+		
 		if (userId == null) {
             throw new UnauthorizedException("Authorization required");
         }

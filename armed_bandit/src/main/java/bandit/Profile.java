@@ -3,6 +3,7 @@ package bandit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.google.appengine.repackaged.com.google.common.collect.ImmutableList;
 import com.googlecode.objectify.annotation.Entity;
@@ -23,11 +24,13 @@ public class Profile {
 	@Index
 	public int solscount=0;
 	
+	
 
 	public int betz=0;
 	public int bet_time=0;
 	public int score=0;
-    
+	
+	public int rand;
 
 	/**
      * Public constructor for Profile.
@@ -40,9 +43,18 @@ public class Profile {
     public Profile (String userId, String displayName) {
     	this.userId = userId;
     	this.displayName = displayName;
+    	int seed = userId.hashCode();
+    	this.rand=set_seed(seed);
+    	
    
     }
     
+	private int set_seed(int seed) {
+		// TODO Auto-generated method stub
+		Random random=new Random(seed);
+		return random.nextInt(4);
+	}
+
 	public String getDisplayName() {
 		return displayName;
 	}

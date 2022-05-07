@@ -251,7 +251,7 @@ banditApp.controllers.controller('CreateSolution',
  
 
 
-banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTTP_ERRORS) {
+banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTTP_ERRORS, startFact) {
 
     /**
      * Holds the status if the query is being executed.
@@ -294,12 +294,19 @@ banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTT
      * @type {Array}
      */
     $scope.bandits = [];
-    $scope.scores=0;
-    $scope.score = function () {
-    	console.log($scope.bandits);
-        return $scope.bandits.score;
-    };
-
+    
+    $scope.init_score = function () {
+    $scope.getSolutionsCreated();
+    
+    if (startFact.isStarted()==='true') {
+    
+    $scope.scores = JSON.parse(localStorage.getItem("finals"));    
+    console.log(JSON.parse(localStorage.getItem("finals")));
+    }
+    else {$scope.scores=0;startFact.startApp();} 
+    
+   };
+    
     /**
      * Holds the state if offcanvas is enabled.
      *
@@ -481,11 +488,10 @@ banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTT
                     } else {
                         // The request has succeeded.
                         
-                        $scope.bandits = resp.result.items;
-                        console.log(resp.result);
+                        $scope.bandits = resp.result;
                         $scope.scores= resp.result.score;
+                        localStorage.setItem("finals", JSON.stringify(resp.result.score));
                         $scope.loading = false;
-                        $scope.messages = 'Query succeeded : Solutions you have liked and added';
                         $scope.alertStatus = 'success';
                         $log.info($scope.messages);
                     }

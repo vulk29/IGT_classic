@@ -39,4 +39,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>.m2</name>
+			<type>2</type>
+			<location>C:/Users/au289559/.m2</location>
+		</link>
+	</linkedResources>
 </projectDescription>
