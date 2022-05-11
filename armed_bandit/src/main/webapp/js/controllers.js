@@ -303,7 +303,7 @@ banditApp.controllers.controller('ShowSolutionCtrl', function ($scope, $log, HTT
     $scope.scores = JSON.parse(localStorage.getItem("finals"));    
     console.log(JSON.parse(localStorage.getItem("finals")));
     }
-    else {$scope.scores=0;startFact.startApp();} 
+    else {$scope.scores=2000;startFact.startApp();} 
     
    };
     

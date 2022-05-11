@@ -28,7 +28,7 @@ public class Profile {
 
 	public int betz=0;
 	public int bet_time=0;
-	public int score=0;
+	public int score=2000;
 	
 	public int rand;
 
@@ -88,7 +88,7 @@ public class Profile {
 
 	public void update_score(int [] fitness) {
 		// TODO Auto-generated method stub
-		this.score=this.score+fitness[0]-fitness[1];
+		this.score=this.score+fitness[0]+fitness[1];
 	}
 	
 	public void update_bet(int bet, int order) {
