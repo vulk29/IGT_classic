@@ -13,9 +13,9 @@ public class Fitness {
     {
 	
 int [] fitness= new int [2];	
-if (order>40)
+if (order>=40)
 	order=order-40;
-if (order>40)
+if (order>=40)
 	order=order-40;
 arm=remap_arms(arm, arm_logic);
 
